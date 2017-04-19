@@ -158,7 +158,7 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Learn-Flex" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="photo-Learn-Flex" class="article article-type-photo  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -178,101 +178,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="关于Flex（弹性）布局"><a href="#关于Flex（弹性）布局" class="headerlink" title="关于Flex（弹性）布局"></a>关于Flex（弹性）布局</h1><p>[TOC]<br>dfdddfdfdf</p>
+        <h1 id="关于Flex（弹性）布局"><a href="#关于Flex（弹性）布局" class="headerlink" title="关于Flex（弹性）布局"></a>关于Flex（弹性）布局</h1><p>[TOC]</p>
 <h3 id="零、注意"><a href="#零、注意" class="headerlink" title="零、注意"></a>零、注意</h3><p>1.使用flex非常方便。但是要注意区分容器（container）的属性和容器中项目（item）的属性。</p>
 <h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><p>flex—“弹性布局”在2009年推出，可以简便、完整、响应式地实现各种页面布局，目前，它已经得到所有浏览器的支持。</p>
 <p>将父容器的display设置成flex，子元素自动成为容器成员。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>设为Flex布局以后，子元素的<code>float</code>、<code>clear</code>和<code>vertical-align</code>属性将失效<br><img src="" alt=""><br> <img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.20.03.png" alt=""></p>
 <p>容器存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
-<p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
-<h3 id="二、容器的属性"><a href="#二、容器的属性" class="headerlink" title="二、容器的属性"></a>二、容器的属性</h3><ul>
-<li>flex-direction</li>
-<li>flex-wrap</li>
-<li>flex-flow</li>
-<li>justify-content</li>
-<li>align-items</li>
-<li>align-content</li>
-</ul>
-<h4 id="1-flex-direction"><a href="#1-flex-direction" class="headerlink" title="1.flex-direction"></a>1.flex-direction</h4><p>排布方向</p>
-<ul>
-<li><code>row</code>（默认值）：主轴为水平方向，起点在左端。</li>
-<li><code>row-reverse</code>：主轴为水平方向，起点在右端。</li>
-<li><code>column</code>：主轴为垂直方向，起点在上沿。</li>
-<li><code>column-reverse</code>：主轴为垂直方向，起点在下沿。</li>
-</ul>
-<p>示例</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-id">#main</span> &#123;</div><div class="line">    <span class="attribute">display</span>: flex;</div><div class="line">    <span class="attribute">flex-direction</span>:xxxxxx;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="selector-id">#main</span> <span class="selector-tag">div</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">40px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:coral;"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightblue;"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:khaki;"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:pink;"</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgrey;"</span>&gt;</span>E<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgreen;"</span>&gt;</span>F<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>xxxxx设置为以上四个值分别得到 <img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.37.53.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.37.53"> <img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.38.51.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.38.51"><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.39.22.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.39.22"><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.40.29.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.40.29"></p>
-<h4 id="2-flex-wrap"><a href="#2-flex-wrap" class="headerlink" title="2.flex-wrap"></a>2.flex-wrap</h4><ul>
-<li>wrap</li>
-<li>nowrap(默认)</li>
-<li>wrap-reverse</li>
-</ul>
-<p>示例</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-id">#main</span> &#123;</div><div class="line">    <span class="attribute">display</span>: flex;</div><div class="line">    <span class="attribute">flex-direction</span>:row;</div><div class="line">	<span class="attribute">flex-wrap</span>:xxxxxxxxxxxxxxxxxxxx;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="selector-id">#main</span> <span class="selector-tag">div</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">40px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:coral;"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightblue;"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:khaki;"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:pink;"</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgrey;"</span>&gt;</span>E<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgreen;"</span>&gt;</span>F<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:coral;"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightblue;"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:khaki;"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:pink;"</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgrey;"</span>&gt;</span>E<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgreen;"</span>&gt;</span>F<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:coral;"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightblue;"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:khaki;"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:pink;"</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgrey;"</span>&gt;</span>E<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgreen;"</span>&gt;</span>F<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:coral;"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightblue;"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:khaki;"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:pink;"</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgrey;"</span>&gt;</span>E<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"background-color:lightgreen;"</span>&gt;</span>F<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>以上属性一次替代 xxxxxxx 分别得到： <img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.57.54.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.57.54"><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.58.40.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.58.40"> <img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.59.28.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 上午11.59.28"></p>
-<h4 id="3-flex-flow"><a href="#3-flex-flow" class="headerlink" title="3.flex-flow"></a>3.flex-flow</h4><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code></p>
-<h4 id="4-justify-content"><a href="#4-justify-content" class="headerlink" title="4. justify-content"></a>4. justify-content</h4><p>定义项目在一行上的分布方式</p>
-<ul>
-<li><code>flex-start</code>（默认）：左对齐</li>
-<li><code>flex-end</code>：右对齐</li>
-<li><code>center</code>： 居中</li>
-<li><code>space-between</code>：两端顶满，项目之间的间隔都相等。</li>
-<li><p><code>space-around</code>：每个项目两端间隔（x）相等（两个项目之间间隔为2x，两端为1x）</p>
-<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午12.09.11.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午12.09.11"></p>
-</li>
-</ul>
-<h4 id="5-align-items"><a href="#5-align-items" class="headerlink" title="5.align-items"></a>5.align-items</h4><p>定义了一行的项目在竖直方向上的对齐方式</p>
-<ul>
-<li><code>flex-start</code>：交叉轴的起点对齐。</li>
-<li><code>flex-end</code>：交叉轴的终点对齐。</li>
-<li><code>center</code>：交叉轴的中点对齐。</li>
-<li><code>baseline</code>: 项目的第一行文字的基线对齐。</li>
-<li><p><code>stretch</code>（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</p>
-<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午12.16.45.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午12.16.45"></p>
-</li>
-</ul>
-<h4 id="6-align-content"><a href="#6-align-content" class="headerlink" title="6.align-content"></a>6.align-content</h4><p>定义了多行元素中美一行在竖直方向上的分布方式</p>
-<ul>
-<li><code>flex-start</code>：与交叉轴的起点对齐。</li>
-<li><code>flex-end</code>：与交叉轴的终点对齐。</li>
-<li><code>center</code>：与交叉轴的中点对齐。</li>
-<li><code>space-between</code>：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
-<li><code>space-around</code>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
-<li><p><code>stretch</code>（默认值）：轴线占满整个交叉轴。</p>
-<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午12.20.22.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午12.20.22"></p>
-</li>
-</ul>
-<h3 id="三、容器中项目的属性"><a href="#三、容器中项目的属性" class="headerlink" title="三、容器中项目的属性"></a>三、容器中项目的属性</h3><ul>
-<li><code>order</code></li>
-<li><code>flex-grow</code></li>
-<li><code>flex-shrink</code></li>
-<li><code>flex-basis</code></li>
-<li><code>flex</code></li>
-<li><code>align-self</code></li>
-</ul>
-<h4 id="1-order"><a href="#1-order" class="headerlink" title="1. order"></a>1. order</h4><p>为项目设定序号，项目会按照序号大小在容器中排布</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  order: <span class="tag">&lt;<span class="name">integer</span>&gt;</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="2-lex-grow"><a href="#2-lex-grow" class="headerlink" title="2.lex-grow"></a>2.lex-grow</h4><p>为项目设置占满空间的放大比例。项目的数值的比例为他们占据整个空间的各自的比例。 默认为0，即有空间也不放大<img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午7.51.45.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午7.51.45"></p>
-<h4 id="3-flex-shrink"><a href="#3-flex-shrink" class="headerlink" title="3.flex-shrink"></a>3.flex-shrink</h4><p>为项目设置占满空间的缩小比例。项目的数值的比例为他们占据整个空间的各自的比例。 默认为1，为使用空间而按比例缩小。负数无效。值为0是不缩小。</p>
-<h4 id="4-flex-basis"><a href="#4-flex-basis" class="headerlink" title="4.flex-basis"></a>4.flex-basis</h4><p>定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。</p>
-<blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; .item &#123;</div><div class="line">&gt;   flex-basis: <span class="tag">&lt;<span class="name">length</span>&gt;</span> | auto; /* default auto */</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>它可以设为跟<code>width</code>或<code>height</code>属性一样的值（比如350px），则项目将占据固定空间。</p>
-<h4 id="5-flex"><a href="#5-flex" class="headerlink" title="5.flex"></a>5.flex</h4><p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; .item &#123;</div><div class="line">&gt;   flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</p>
-<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-<h4 id="6-align-self"><a href="#6-align-self" class="headerlink" title="6.align-self"></a>6.align-self</h4><p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
-<blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; .item &#123;</div><div class="line">&gt;   align-self: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。 <img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午8.04.20.png" alt="http://oepw8605x.bkt.clouddn.com/屏幕快照 2016-09-22 下午8.04.20"></p>
-
+<p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。<br>
+        
+          <a class="article-more-a" href="/2017/04/18/Learn-Flex/#more">more >></a>
+        
       
 
       
@@ -596,14 +512,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">dog</a>
               </li>
              
@@ -613,6 +521,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">try</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
