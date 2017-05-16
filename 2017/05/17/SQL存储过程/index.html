@@ -6,17 +6,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tianhao66.cn">
-  <title>Archives: 2017/4 | TianHao&#39;s blog</title>
+  <title>SQL存储过程 | TianHao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="About My Life And My Work">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TianHao's blog">
-<meta property="og:url" content="http://tianhao66.cn/archives/2017/04/index.html">
+  <meta name="description" content="[TOC] SQL存储过程概述是什么一句话，存储过程可以看做函数 特点">
+<meta name="keywords" content="cs,数据库,后端,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL存储过程">
+<meta property="og:url" content="http://tianhao66.cn/2017/05/17/SQL存储过程/index.html">
 <meta property="og:site_name" content="TianHao's blog">
-<meta property="og:description" content="About My Life And My Work">
+<meta property="og:description" content="[TOC] SQL存储过程概述是什么一句话，存储过程可以看做函数 特点">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.58.06.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.59.52.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.02.33.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.05.00.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.05.05.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.05.45.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.06.26.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.07.16.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.19.06.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.22.04.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.23.02.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.24.52.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.25.03.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.25.55.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.26.13.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.28.48.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.30.25.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.31.03.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.31.13.png">
+<meta property="og:updated_time" content="2017-05-16T19:34:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TianHao's blog">
-<meta name="twitter:description" content="About My Life And My Work">
+<meta name="twitter:title" content="SQL存储过程">
+<meta name="twitter:description" content="[TOC] SQL存储过程概述是什么一句话，存储过程可以看做函数 特点">
+<meta name="twitter:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.58.06.png">
   
     <link rel="alternative" href="/atom.xml" title="TianHao&#39;s blog" type="application/atom+xml">
   
@@ -156,141 +178,218 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="photo-SQL存储过程" class="article article-type-photo " itemscope itemprop="blogPost">
+<!-- 目录内容 -->
+        
+            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+            <span class="btn-bg"></span>
+            <span class="btn-text">文章导航</span>
+            </p>
+            <div id="toc-article" class="toc-article">
+                <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                <strong class="toc-title">文章目录</strong>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL存储过程"><span class="toc-number">1.</span> <span class="toc-text">SQL存储过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#是什么"><span class="toc-number">1.1.1.</span> <span class="toc-text">是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.1.2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型"><span class="toc-number">1.1.3.</span> <span class="toc-text">类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-number">1.2.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#触发器（特殊的存储过程）"><span class="toc-number">1.3.</span> <span class="toc-text">触发器（特殊的存储过程）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法-1"><span class="toc-number">1.3.2.</span> <span class="toc-text">语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">1.4.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述-2"><span class="toc-number">1.4.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法及其应用"><span class="toc-number">1.4.2.</span> <span class="toc-text">语法及其应用</span></a></li></ol></li></ol></li></ol>
+           </div>
+           <script type="text/javascript">
+            function showToc(){
+                var toc_article = document.getElementById("toc-article");
+                var show_toc_btn = document.getElementById("show-toc-btn");
+                toc_article.setAttribute("style","display:block");
+                show_toc_btn.setAttribute("style","display:none");
+                };
+            function showBtn(){
+                var toc_article = document.getElementById("toc-article");
+                var show_toc_btn = document.getElementById("show-toc-btn");
+                toc_article.setAttribute("style","display:none");
+                show_toc_btn.setAttribute("style","display:block");
+                };
+           </script>
+             
+        <!-- 目录内容结束 -->
+
+
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-photo">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/19/neuralNetworks-Representation/" class="archive-article-date">
-  	<time datetime="2017-04-19T12:51:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/19/neuralNetworks-Representation/">Neurons Networks:Representation</a>
+    <h1 class="article-title" itemprop="name">
+      SQL存储过程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/17/SQL存储过程/" class="archive-article-date">
+  	<time datetime="2017-05-16T19:08:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="SQL存储过程"><a href="#SQL存储过程" class="headerlink" title="SQL存储过程"></a>SQL存储过程</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>一句话，存储过程可以看做函数</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.58.06.png" alt="屏幕快照 2017-05-17 上午2.58.06"></p>
+<a id="more"></a>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.59.52.png" alt="屏幕快照 2017-05-17 上午2.59.52"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.02.33.png" alt="屏幕快照 2017-05-17 上午3.02.33"></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.05.00.png" alt="屏幕快照 2017-05-17 上午3.05.00"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.05.05.png" alt="屏幕快照 2017-05-17 上午3.05.05"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.05.45.png" alt="屏幕快照 2017-05-17 上午3.05.45"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.06.26.png" alt="屏幕快照 2017-05-17 上午3.06.26"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.07.16.png" alt="屏幕快照 2017-05-17 上午3.07.16"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.19.06.png" alt="屏幕快照 2017-05-17 上午3.19.06"></p>
+<h2 id="触发器（特殊的存储过程）"><a href="#触发器（特殊的存储过程）" class="headerlink" title="触发器（特殊的存储过程）"></a>触发器（特殊的存储过程）</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.22.04.png" alt="屏幕快照 2017-05-17 上午3.22.04"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.23.02.png" alt="屏幕快照 2017-05-17 上午3.23.02"></p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.24.52.png" alt="屏幕快照 2017-05-17 上午3.24.52"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.25.03.png" alt="屏幕快照 2017-05-17 上午3.25.03"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.25.55.png" alt="屏幕快照 2017-05-17 上午3.25.55"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.26.13.png" alt="屏幕快照 2017-05-17 上午3.26.13"></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.28.48.png" alt="屏幕快照 2017-05-17 上午3.28.48"></p>
+<h3 id="语法及其应用"><a href="#语法及其应用" class="headerlink" title="语法及其应用"></a>语法及其应用</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.30.25.png" alt="屏幕快照 2017-05-17 上午3.30.25"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.31.03.png" alt="屏幕快照 2017-05-17 上午3.31.03"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午3.31.13.png" alt="屏幕快照 2017-05-17 上午3.31.13"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cs</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Neurons Networks</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">神经网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://tianhao66.cn/2017/05/17/SQL存储过程/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-photo">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/18/Learn-Flex/" class="archive-article-date">
-  	<time datetime="2017-04-18T09:38:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/18/Learn-Flex/">Learn Flex</a>
-    </h1>
+    <a href="/2017/05/17/数据库（新的）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数据库基础
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">css3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/16/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-16T11:59:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/16/hello-world/">Hello World</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -313,8 +412,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
