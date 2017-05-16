@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://tianhao66.cn">
   <title>数据库基础 | TianHao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[TOC] SQL一、语法数据类型变量与常量   函数               二、数据库的创建与管理结构 数据文件和事务日志文件是必须的数据文件 事务日志 代码创建/修改（transact-sql）       三、数据表与索引数据表           索引  四、数据查询查询基本语法基本查询   带条件查询     ORDER BY INTO 聚合函数  GROUP BY   连接查询">
+  <meta name="description" content="[TOC] SQL一、语法数据类型变量与常量">
 <meta name="keywords" content="cs,数据库,后端,SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库基础">
 <meta property="og:url" content="http://tianhao66.cn/2017/05/17/sql/index.html">
 <meta property="og:site_name" content="TianHao's blog">
-<meta property="og:description" content="[TOC] SQL一、语法数据类型变量与常量   函数               二、数据库的创建与管理结构 数据文件和事务日志文件是必须的数据文件 事务日志 代码创建/修改（transact-sql）       三、数据表与索引数据表           索引  四、数据查询查询基本语法基本查询   带条件查询     ORDER BY INTO 聚合函数  GROUP BY   连接查询">
+<meta property="og:description" content="[TOC] SQL一、语法数据类型变量与常量">
 <meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.02.21.png">
 <meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.04.54.png">
 <meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.06.26.png">
@@ -92,10 +92,10 @@
 <meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.09.21.png">
 <meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.09.50.png">
 <meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.11.22.png">
-<meta property="og:updated_time" content="2017-05-16T18:25:35.000Z">
+<meta property="og:updated_time" content="2017-05-16T18:32:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础">
-<meta name="twitter:description" content="[TOC] SQL一、语法数据类型变量与常量   函数               二、数据库的创建与管理结构 数据文件和事务日志文件是必须的数据文件 事务日志 代码创建/修改（transact-sql）       三、数据表与索引数据表           索引  四、数据查询查询基本语法基本查询   带条件查询     ORDER BY INTO 聚合函数  GROUP BY   连接查询">
+<meta name="twitter:description" content="[TOC] SQL一、语法数据类型变量与常量">
 <meta name="twitter:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.02.21.png">
   
     <link rel="alternative" href="/atom.xml" title="TianHao&#39;s blog" type="application/atom+xml">
@@ -288,6 +288,7 @@
         <p>[TOC]</p>
 <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="一、语法"><a href="#一、语法" class="headerlink" title="一、语法"></a>一、语法</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h3 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.02.21.png" alt="屏幕快照 2017-05-16 下午5.02.21"></p>
 <p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.04.54.png" alt="屏幕快照 2017-05-16 下午5.04.54"></p>
+<a id="more"></a>
 <p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.06.26.png" alt="屏幕快照 2017-05-16 下午5.06.26"></p>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.15.42.png" alt="屏幕快照 2017-05-16 下午5.15.42"></p>
 <p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.16.00.png" alt="屏幕快照 2017-05-16 下午5.16.00"></p>
@@ -597,6 +598,14 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
               </li>
              
@@ -610,14 +619,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">神经网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
