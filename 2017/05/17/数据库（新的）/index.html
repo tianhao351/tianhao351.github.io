@@ -1,0 +1,848 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cs,数据库,后端,SQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] 数据库（新的）一、数据库管理技术概念和发展信息 = 数据 + 数据处理 信息是客观世界的反应 数据是用来记录信息的可识别的符号 数据处理：包括数据的收集、存储、加工、检索、传输等  数据库数据库是长期存储在数据库中，有组织的，可共享的，大量的数据合集，以文件的方式存储（硬件是其介质） 数据库的特点 按照一定的数据模型组织、描述、存储 可共享 独立性高 冗余度小，易扩展  数据库管理系统">
+<meta name="keywords" content="cs,数据库,后端,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基础">
+<meta property="og:url" content="http://tianhao66.cn/2017/05/17/数据库（新的）/index.html">
+<meta property="og:site_name" content="TianHao's blog">
+<meta property="og:description" content="[TOC] 数据库（新的）一、数据库管理技术概念和发展信息 = 数据 + 数据处理 信息是客观世界的反应 数据是用来记录信息的可识别的符号 数据处理：包括数据的收集、存储、加工、检索、传输等  数据库数据库是长期存储在数据库中，有组织的，可共享的，大量的数据合集，以文件的方式存储（硬件是其介质） 数据库的特点 按照一定的数据模型组织、描述、存储 可共享 独立性高 冗余度小，易扩展  数据库管理系统">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.18.44.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.24.13.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.27.57.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.34.58.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.37.26.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.38.19.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.39.15.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.39.36.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.42.27.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.50.15.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.51.56.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.52.48.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.56.51.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午10.50.29.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.33.26.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.34.10.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.39.17.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.39.38.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.40.04.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.41.03.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 下午5.25.39.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 下午5.36.50.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 下午5.43.04.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.23.11.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.23.32.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.24.54.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.25.24.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.28.09.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.38.48.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.21.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.25.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.30.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.37.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.12.18.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.13.03.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.15.46.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.19.38.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.47.44.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.50.44.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.53.27.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.56.43.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.00.03.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.01.53.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.17.31.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.11.04.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.11.58.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.40.51.png">
+<meta property="og:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.40.45.png">
+<meta property="og:updated_time" content="2017-05-16T18:25:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库基础">
+<meta name="twitter:description" content="[TOC] 数据库（新的）一、数据库管理技术概念和发展信息 = 数据 + 数据处理 信息是客观世界的反应 数据是用来记录信息的可识别的符号 数据处理：包括数据的收集、存储、加工、检索、传输等  数据库数据库是长期存储在数据库中，有组织的，可共享的，大量的数据合集，以文件的方式存储（硬件是其介质） 数据库的特点 按照一定的数据模型组织、描述、存储 可共享 独立性高 冗余度小，易扩展  数据库管理系统">
+<meta name="twitter:image" content="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.18.44.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tianhao66.cn/2017/05/17/数据库（新的）/"/>
+
+
+
+
+
+  <title> 数据库基础 | TianHao's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TianHao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">YOU NRVER KNOW</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tianhao66.cn/2017/05/17/数据库（新的）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TianHao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TianHao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据库基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T02:38:07+08:00">
+                2017-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="数据库（新的）"><a href="#数据库（新的）" class="headerlink" title="数据库（新的）"></a>数据库（新的）</h1><h2 id="一、数据库管理技术概念和发展"><a href="#一、数据库管理技术概念和发展" class="headerlink" title="一、数据库管理技术概念和发展"></a>一、数据库管理技术概念和发展</h2><h3 id="信息-数据-数据处理"><a href="#信息-数据-数据处理" class="headerlink" title="信息 = 数据 + 数据处理"></a>信息 = 数据 + 数据处理</h3><ul>
+<li>信息是客观世界的反应</li>
+<li>数据是用来记录信息的可识别的符号</li>
+<li>数据处理：包括数据的收集、存储、加工、检索、传输等</li>
+</ul>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>数据库是长期存储在数据库中，有组织的，可共享的，大量的数据合集，以文件的方式存储（硬件是其介质）</p>
+<h3 id="数据库的特点"><a href="#数据库的特点" class="headerlink" title="数据库的特点"></a>数据库的特点</h3><ul>
+<li>按照一定的数据模型组织、描述、存储</li>
+<li>可共享</li>
+<li>独立性高</li>
+<li>冗余度小，易扩展</li>
+</ul>
+<h3 id="数据库管理系统（DBMS）"><a href="#数据库管理系统（DBMS）" class="headerlink" title="数据库管理系统（DBMS）"></a>数据库管理系统（DBMS）</h3><h4 id="位于用户和操作系统之间"><a href="#位于用户和操作系统之间" class="headerlink" title="位于用户和操作系统之间"></a>位于用户和操作系统之间<img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.18.44.png" alt="屏幕快照 2017-05-14 上午2.18.44"></h4><h4 id="重要功能"><a href="#重要功能" class="headerlink" title="重要功能"></a>重要功能</h4><h5 id="数据定义功能"><a href="#数据定义功能" class="headerlink" title="数据定义功能"></a>数据定义功能</h5><ul>
+<li>提供数据定义语言</li>
+<li>定义数据库中的数据对象</li>
+</ul>
+<h5 id="数据操纵功能"><a href="#数据操纵功能" class="headerlink" title="数据操纵功能"></a>数据操纵功能</h5><ul>
+<li>提供数据操纵语言</li>
+<li>实现对数据库的基本操作（增删改查）</li>
+</ul>
+<h5 id="数据库的建立和维护功能、运行管理"><a href="#数据库的建立和维护功能、运行管理" class="headerlink" title="数据库的建立和维护功能、运行管理"></a>数据库的建立和维护功能、运行管理</h5><ul>
+<li>保证数据的安全性、完整性</li>
+<li>多用户实现对数据的并发使用</li>
+<li>发生故障后的系统恢复</li>
+</ul>
+<h4 id="常见的大型商业数据库系统"><a href="#常见的大型商业数据库系统" class="headerlink" title="常见的大型商业数据库系统"></a>常见的大型商业数据库系统</h4><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.24.13.png" alt="屏幕快照 2017-05-14 上午2.24.13"></p>
+<h3 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>实际可运行的、具有管理和控制数据库功能并向应用程序提供数据或数据支持的系统</p>
+<h4 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h4><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.27.57.png" alt="屏幕快照 2017-05-14 上午2.27.57"></p>
+<h3 id="数据管理技术的产生和发展"><a href="#数据管理技术的产生和发展" class="headerlink" title="数据管理技术的产生和发展"></a>数据管理技术的产生和发展</h3><h4 id="发展过程"><a href="#发展过程" class="headerlink" title="发展过程"></a>发展过程</h4><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.34.58.png" alt="屏幕快照 2017-05-14 上午2.34.58"></p>
+<h5 id="1、人工阶段"><a href="#1、人工阶段" class="headerlink" title="1、人工阶段"></a>1、人工阶段</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.37.26.png" alt="屏幕快照 2017-05-14 上午2.37.26"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.38.19.png" alt="屏幕快照 2017-05-14 上午2.38.19"></p>
+<h5 id="文件系统阶段"><a href="#文件系统阶段" class="headerlink" title="文件系统阶段"></a>文件系统阶段</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.39.15.png" alt="屏幕快照 2017-05-14 上午2.39.15"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.39.36.png" alt="屏幕快照 2017-05-14 上午2.39.36"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.42.27.png" alt="屏幕快照 2017-05-14 上午2.42.27"></p>
+<h5 id="数据库系统阶段"><a href="#数据库系统阶段" class="headerlink" title="数据库系统阶段"></a>数据库系统阶段</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.50.15.png" alt="屏幕快照 2017-05-14 上午2.50.15"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.51.56.png" alt="屏幕快照 2017-05-14 上午2.51.56"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.52.48.png" alt="屏幕快照 2017-05-14 上午2.52.48"></p>
+<p>存储结构</p>
+<p>逻辑结构</p>
+<h3 id="数据库系统概念"><a href="#数据库系统概念" class="headerlink" title="数据库系统概念"></a>数据库系统概念</h3><h4 id="三个世界"><a href="#三个世界" class="headerlink" title="三个世界"></a>三个世界</h4><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午2.56.51.png" alt="屏幕快照 2017-05-14 上午2.56.51"></p>
+<h4 id="概念模型的表示"><a href="#概念模型的表示" class="headerlink" title="概念模型的表示"></a>概念模型的表示</h4><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午10.50.29.png" alt="屏幕快照 2017-05-14 上午10.50.29"></p>
+<h5 id="联系也可以有属性"><a href="#联系也可以有属性" class="headerlink" title="联系也可以有属性"></a>联系也可以有属性</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.33.26.png" alt="屏幕快照 2017-05-14 上午11.33.26"></p>
+<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.34.10.png" alt="屏幕快照 2017-05-14 上午11.34.10"></p>
+<h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.39.17.png" alt="屏幕快照 2017-05-14 上午11.39.17"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.39.38.png" alt="屏幕快照 2017-05-14 上午11.39.38"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.40.04.png" alt="屏幕快照 2017-05-14 上午11.40.04"></p>
+<h5 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 上午11.41.03.png" alt="屏幕快照 2017-05-14 上午11.41.03"></p>
+<h3 id="数据模型的组成要素"><a href="#数据模型的组成要素" class="headerlink" title="数据模型的组成要素"></a>数据模型的组成要素</h3><h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><ul>
+<li>所研究对象的集合</li>
+<li>通常按照数据结构的类型来命名数据模型（层次模型、网状模型、关系模型）</li>
+</ul>
+<h4 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h4><ul>
+<li>查询和更新</li>
+<li>数据模型要定义这些操作的确切含义、操作符号、操作规则、操作语义</li>
+<li>数据结构是对系统静态特征的描述、数据操作是对系统动态特征的描述</li>
+</ul>
+<h4 id="数据完整性约束规则"><a href="#数据完整性约束规则" class="headerlink" title="数据完整性约束规则"></a>数据完整性约束规则</h4><ul>
+<li>对数据模型中数据及其联系所制定的制约和依存规则</li>
+<li>保证数据的正确性和有效性</li>
+</ul>
+<h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 下午5.25.39.png" alt="屏幕快照 2017-05-14 下午5.25.39"></p>
+<h4 id="模式（schema）"><a href="#模式（schema）" class="headerlink" title="模式（schema）"></a>模式（schema）</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ul>
+<li><ul>
+<li><strong>数据库中全体数据的逻辑结构和特征的描述</strong></li>
+<li><strong>与数据的物理存储细节和硬件环境无关</strong></li>
+<li><strong>与具体的应用程序、开发工具及高级程序设计语言无关</strong></li>
+<li><strong>提供这一层次的数据模式描述，主要是为了使数据库系统的设计者，在对所有用户的应用需求进行统一综合考虑后，从总体上，能够将这些需求所涉及到的数据及其相互联系，有机结合为一个逻辑整体，按照统一的观点构造全局逻辑结构。</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="一个数据库只有一个模式"><a href="#一个数据库只有一个模式" class="headerlink" title="一个数据库只有一个模式"></a>一个数据库只有一个模式</h5><h5 id="模式的定义"><a href="#模式的定义" class="headerlink" title="模式的定义"></a>模式的定义</h5><h5 id="数据的逻辑结构-数据之间关系-书记后管的安全性、完整性的要求"><a href="#数据的逻辑结构-数据之间关系-书记后管的安全性、完整性的要求" class="headerlink" title="- - 数据的逻辑结构,,,- - 数据之间关系,,,- - 书记后管的安全性、完整性的要求"></a>- - 数据的逻辑结构,,,- - 数据之间关系,,,- - 书记后管的安全性、完整性的要求</h5><h5 id="外模式"><a href="#外模式" class="headerlink" title="外模式"></a>外模式</h5><ul>
+<li>面向用户</li>
+<li>用户只能看局部</li>
+<li>保证安全性</li>
+<li>介于模式和用户之间</li>
+</ul>
+<h5 id="内模式（物理模式、存储模式）"><a href="#内模式（物理模式、存储模式）" class="headerlink" title="内模式（物理模式、存储模式）"></a>内模式（物理模式、存储模式）</h5><ul>
+<li>它给出数据库的物理存储结构和物理存取方法</li>
+<li>一个数据库只有一个内模式</li>
+</ul>
+<h5 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 下午5.36.50.png" alt="屏幕快照 2017-05-14 下午5.36.50"></p>
+<h4 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h4><h5 id="外模式-模式映像"><a href="#外模式-模式映像" class="headerlink" title="外模式/模式映像"></a>外模式/模式映像</h5><p>保证数据的<strong>逻辑独立性</strong></p>
+<h5 id="模式-内模式映像"><a href="#模式-内模式映像" class="headerlink" title="模式/内模式映像"></a>模式/内模式映像</h5><p>保证数据的<strong>物理独立性</strong></p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-14 下午5.43.04.png" alt="屏幕快照 2017-05-14 下午5.43.04"></p>
+<h2 id="二、关系型数据库的理论和设计"><a href="#二、关系型数据库的理论和设计" class="headerlink" title="二、关系型数据库的理论和设计"></a>二、关系型数据库的理论和设计</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h5 id="关系——单一的数据结构"><a href="#关系——单一的数据结构" class="headerlink" title="关系——单一的数据结构"></a>关系——单一的数据结构</h5><h5 id="二维表——逻辑结构"><a href="#二维表——逻辑结构" class="headerlink" title="二维表——逻辑结构"></a>二维表——逻辑结构</h5><h5 id="域："><a href="#域：" class="headerlink" title="域："></a>域：</h5><p>相同数据结构的取值的集合：{男、女}、整数</p>
+<h5 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.23.11.png" alt="屏幕快照 2017-05-15 上午1.23.11"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.23.32.png" alt="屏幕快照 2017-05-15 上午1.23.32"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.24.54.png" alt="屏幕快照 2017-05-15 上午1.24.54"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.25.24.png" alt="屏幕快照 2017-05-15 上午1.25.24"></p>
+<h5 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午1.28.09.png" alt="屏幕快照 2017-05-15 上午1.28.09"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.38.48.png" alt="屏幕快照 2017-05-15 上午9.38.48"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.21.png" alt="屏幕快照 2017-05-15 上午9.41.21"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.25.png" alt="屏幕快照 2017-05-15 上午9.41.25"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.30.png" alt="屏幕快照 2017-05-15 上午9.41.30"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 上午9.41.37.png" alt="屏幕快照 2017-05-15 上午9.41.37"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.12.18.png" alt="屏幕快照 2017-05-15 下午2.12.18"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.13.03.png" alt="屏幕快照 2017-05-15 下午2.13.03"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.15.46.png" alt="屏幕快照 2017-05-15 下午2.15.46"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午2.19.38.png" alt="屏幕快照 2017-05-15 下午2.19.38"></p>
+<h3 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h3><h4 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h4><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.47.44.png" alt="屏幕快照 2017-05-15 下午9.47.44"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.50.44.png" alt="屏幕快照 2017-05-15 下午9.50.44"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.53.27.png" alt="屏幕快照 2017-05-15 下午9.53.27"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-15 下午9.56.43.png" alt="屏幕快照 2017-05-15 下午9.56.43"></p>
+<h4 id="关于完整性"><a href="#关于完整性" class="headerlink" title="关于完整性"></a>关于完整性</h4><h5 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.00.03.png" alt="屏幕快照 2017-05-16 上午12.00.03"></p>
+<h5 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.01.53.png" alt="屏幕快照 2017-05-16 上午12.01.53"></p>
+<h5 id="用户定义完整性"><a href="#用户定义完整性" class="headerlink" title="用户定义完整性"></a>用户定义完整性</h5><p>即用户自定义的一些限制条件（年龄&gt;0，{男、女}）</p>
+<h4 id="关系模式的规范化"><a href="#关系模式的规范化" class="headerlink" title="关系模式的规范化"></a>关系模式的规范化</h4><h5 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h5><p>完全依赖、部分依赖、传递依赖</p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.17.31.png" alt="屏幕快照 2017-05-16 上午12.17.31"></p>
+<h5 id="侯选建"><a href="#侯选建" class="headerlink" title="侯选建"></a>侯选建</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.11.04.png" alt="屏幕快照 2017-05-16 上午12.11.04"></p>
+<h5 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.11.58.png" alt="屏幕快照 2017-05-16 上午12.11.58"></p>
+<p>外键提供了便是关系间联系的手段</p>
+<h5 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h5><p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.40.51.png" alt="屏幕快照 2017-05-16 上午12.40.51"></p>
+<p><img src="http://oepw8605x.bkt.clouddn.com/屏幕快照 2017-05-16 上午12.40.45.png" alt="屏幕快照 2017-05-16 上午12.40.45"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cs/" rel="tag"># cs</a>
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/后端/" rel="tag"># 后端</a>
+          
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/17/sql/" rel="prev" title="数据库基础">
+                数据库基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="TianHao" />
+          <p class="site-author-name" itemprop="name">TianHao</p>
+           
+              <p class="site-description motion-element" itemprop="description">About My Life And My Work</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库（新的）"><span class="nav-number">1.</span> <span class="nav-text">数据库（新的）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、数据库管理技术概念和发展"><span class="nav-number">1.1.</span> <span class="nav-text">一、数据库管理技术概念和发展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息-数据-数据处理"><span class="nav-number">1.1.1.</span> <span class="nav-text">信息 = 数据 + 数据处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的特点"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据库的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库管理系统（DBMS）"><span class="nav-number">1.1.4.</span> <span class="nav-text">数据库管理系统（DBMS）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#位于用户和操作系统之间"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">位于用户和操作系统之间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要功能"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">重要功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据定义功能"><span class="nav-number">1.1.4.2.1.</span> <span class="nav-text">数据定义功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据操纵功能"><span class="nav-number">1.1.4.2.2.</span> <span class="nav-text">数据操纵功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库的建立和维护功能、运行管理"><span class="nav-number">1.1.4.2.3.</span> <span class="nav-text">数据库的建立和维护功能、运行管理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的大型商业数据库系统"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">常见的大型商业数据库系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库系统"><span class="nav-number">1.1.5.</span> <span class="nav-text">数据库系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构成"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">构成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理技术的产生和发展"><span class="nav-number">1.1.6.</span> <span class="nav-text">数据管理技术的产生和发展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#发展过程"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">发展过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、人工阶段"><span class="nav-number">1.1.6.1.1.</span> <span class="nav-text">1、人工阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件系统阶段"><span class="nav-number">1.1.6.1.2.</span> <span class="nav-text">文件系统阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库系统阶段"><span class="nav-number">1.1.6.1.3.</span> <span class="nav-text">数据库系统阶段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库系统概念"><span class="nav-number">1.1.7.</span> <span class="nav-text">数据库系统概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三个世界"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">三个世界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概念模型的表示"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">概念模型的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#联系也可以有属性"><span class="nav-number">1.1.7.2.1.</span> <span class="nav-text">联系也可以有属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实例"><span class="nav-number">1.1.7.2.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型"><span class="nav-number">1.1.7.3.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#关系模型"><span class="nav-number">1.1.7.3.1.</span> <span class="nav-text">关系模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型的组成要素"><span class="nav-number">1.1.8.</span> <span class="nav-text">数据模型的组成要素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据操作"><span class="nav-number">1.1.8.2.</span> <span class="nav-text">数据操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据完整性约束规则"><span class="nav-number">1.1.8.3.</span> <span class="nav-text">数据完整性约束规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库系统的三级模式结构"><span class="nav-number">1.1.9.</span> <span class="nav-text">数据库系统的三级模式结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模式（schema）"><span class="nav-number">1.1.9.1.</span> <span class="nav-text">模式（schema）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念"><span class="nav-number">1.1.9.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一个数据库只有一个模式"><span class="nav-number">1.1.9.1.2.</span> <span class="nav-text">一个数据库只有一个模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模式的定义"><span class="nav-number">1.1.9.1.3.</span> <span class="nav-text">模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的逻辑结构-数据之间关系-书记后管的安全性、完整性的要求"><span class="nav-number">1.1.9.1.4.</span> <span class="nav-text">- - 数据的逻辑结构,,,- - 数据之间关系,,,- - 书记后管的安全性、完整性的要求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外模式"><span class="nav-number">1.1.9.1.5.</span> <span class="nav-text">外模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内模式（物理模式、存储模式）"><span class="nav-number">1.1.9.1.6.</span> <span class="nav-text">内模式（物理模式、存储模式）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实例-1"><span class="nav-number">1.1.9.1.7.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#映射"><span class="nav-number">1.1.9.2.</span> <span class="nav-text">映射</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外模式-模式映像"><span class="nav-number">1.1.9.2.1.</span> <span class="nav-text">外模式/模式映像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模式-内模式映像"><span class="nav-number">1.1.9.2.2.</span> <span class="nav-text">模式/内模式映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重点"><span class="nav-number">1.1.10.</span> <span class="nav-text">重点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、关系型数据库的理论和设计"><span class="nav-number">1.2.</span> <span class="nav-text">二、关系型数据库的理论和设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.2.1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#关系——单一的数据结构"><span class="nav-number">1.2.1.0.1.</span> <span class="nav-text">关系——单一的数据结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二维表——逻辑结构"><span class="nav-number">1.2.1.0.2.</span> <span class="nav-text">二维表——逻辑结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#域："><span class="nav-number">1.2.1.0.3.</span> <span class="nav-text">域：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#笛卡尔积"><span class="nav-number">1.2.1.0.4.</span> <span class="nav-text">笛卡尔积</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系"><span class="nav-number">1.2.1.0.5.</span> <span class="nav-text">关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的设计"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据库的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念-1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于完整性"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">关于完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实体完整性"><span class="nav-number">1.2.2.2.1.</span> <span class="nav-text">实体完整性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参照完整性"><span class="nav-number">1.2.2.2.2.</span> <span class="nav-text">参照完整性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户定义完整性"><span class="nav-number">1.2.2.2.3.</span> <span class="nav-text">用户定义完整性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系模式的规范化"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">关系模式的规范化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#依赖"><span class="nav-number">1.2.2.3.1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#侯选建"><span class="nav-number">1.2.2.3.2.</span> <span class="nav-text">侯选建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外键"><span class="nav-number">1.2.2.3.3.</span> <span class="nav-text">外键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#规范化"><span class="nav-number">1.2.2.3.4.</span> <span class="nav-text">规范化</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TianHao</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

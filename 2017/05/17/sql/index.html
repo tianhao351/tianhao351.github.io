@@ -1,0 +1,845 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cs,数据库,后端,SQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] SQL一、语法数据类型变量与常量   函数               二、数据库的创建与管理结构 数据文件和事务日志文件是必须的数据文件 事务日志 代码创建/修改（transact-sql）       三、数据表与索引数据表           索引  四、数据查询查询基本语法基本查询   带条件查询     ORDER BY INTO 聚合函数  GROUP BY   连接查询">
+<meta name="keywords" content="cs,数据库,后端,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基础">
+<meta property="og:url" content="http://tianhao66.cn/2017/05/17/sql/index.html">
+<meta property="og:site_name" content="TianHao's blog">
+<meta property="og:description" content="[TOC] SQL一、语法数据类型变量与常量   函数               二、数据库的创建与管理结构 数据文件和事务日志文件是必须的数据文件 事务日志 代码创建/修改（transact-sql）       三、数据表与索引数据表           索引  四、数据查询查询基本语法基本查询   带条件查询     ORDER BY INTO 聚合函数  GROUP BY   连接查询">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.02.21.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.04.54.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.06.26.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.15.42.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.16.00.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.16.19.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.17.16.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.19.20.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.20.53.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.21.17.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.45.54.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.59.05.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.59.35.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.59.48.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.02.37.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.02.49.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.15.50.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.26.46.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午9.19.32.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午9.19.56.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.26.11.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.27.47.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.28.08.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.30.35.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.32.34.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.33.45.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.34.47.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.51.17.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.58.47.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.06.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.22.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.29.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.45.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.41.53.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.48.09.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.48.18.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.50.35.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.50.45.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.52.50.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.52.17.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.05.58.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.16.49.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.17.03.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.18.40.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.19.38.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.20.09.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.21.09.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.22.58.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.25.41.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.26.10.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.31.37.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.34.25.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.35.18.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.35.59.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.36.37.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.40.01.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.43.01.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.46.09.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.49.01.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.15.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.19.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.23.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.29.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.54.33.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.57.26.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.59.13.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.00.29.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.03.25.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.04.02.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.04.15.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.04.23.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.07.22.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.07.41.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.08.39.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.09.21.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.09.50.png">
+<meta property="og:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.11.22.png">
+<meta property="og:updated_time" content="2017-05-16T18:25:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库基础">
+<meta name="twitter:description" content="[TOC] SQL一、语法数据类型变量与常量   函数               二、数据库的创建与管理结构 数据文件和事务日志文件是必须的数据文件 事务日志 代码创建/修改（transact-sql）       三、数据表与索引数据表           索引  四、数据查询查询基本语法基本查询   带条件查询     ORDER BY INTO 聚合函数  GROUP BY   连接查询">
+<meta name="twitter:image" content="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.02.21.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tianhao66.cn/2017/05/17/sql/"/>
+
+
+
+
+
+  <title> 数据库基础 | TianHao's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TianHao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">YOU NRVER KNOW</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://tianhao66.cn/2017/05/17/sql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TianHao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TianHao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据库基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T02:08:07+08:00">
+                2017-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="一、语法"><a href="#一、语法" class="headerlink" title="一、语法"></a>一、语法</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h3 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.02.21.png" alt="屏幕快照 2017-05-16 下午5.02.21"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.04.54.png" alt="屏幕快照 2017-05-16 下午5.04.54"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.06.26.png" alt="屏幕快照 2017-05-16 下午5.06.26"></p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.15.42.png" alt="屏幕快照 2017-05-16 下午5.15.42"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.16.00.png" alt="屏幕快照 2017-05-16 下午5.16.00"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.16.19.png" alt="屏幕快照 2017-05-16 下午5.16.19"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.17.16.png" alt="屏幕快照 2017-05-16 下午5.17.16"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.19.20.png" alt="屏幕快照 2017-05-16 下午5.19.20"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.20.53.png" alt="屏幕快照 2017-05-16 下午5.20.53"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午5.21.17.png" alt="屏幕快照 2017-05-16 下午5.21.17"></p>
+<p> <img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.45.54.png" alt="屏幕快照 2017-05-16 下午7.45.54"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.59.05.png" alt="屏幕快照 2017-05-16 下午7.59.05"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.59.35.png" alt="屏幕快照 2017-05-16 下午7.59.35"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午7.59.48.png" alt="屏幕快照 2017-05-16 下午7.59.48"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.02.37.png" alt="屏幕快照 2017-05-16 下午8.02.37"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.02.49.png" alt="屏幕快照 2017-05-16 下午8.02.49"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.15.50.png" alt="屏幕快照 2017-05-16 下午8.15.50"></p>
+<h2 id="二、数据库的创建与管理"><a href="#二、数据库的创建与管理" class="headerlink" title="二、数据库的创建与管理"></a>二、数据库的创建与管理</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午8.26.46.png" alt="屏幕快照 2017-05-16 下午8.26.46"></p>
+<h4 id="数据文件和事务日志文件是必须的"><a href="#数据文件和事务日志文件是必须的" class="headerlink" title="数据文件和事务日志文件是必须的"></a>数据文件和事务日志文件是必须的</h4><h4 id="数据文件"><a href="#数据文件" class="headerlink" title="数据文件"></a>数据文件</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午9.19.32.png" alt="屏幕快照 2017-05-16 下午9.19.32"></p>
+<h4 id="事务日志"><a href="#事务日志" class="headerlink" title="事务日志"></a>事务日志</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午9.19.56.png" alt="屏幕快照 2017-05-16 下午9.19.56"></p>
+<h4 id="代码创建-修改（transact-sql）"><a href="#代码创建-修改（transact-sql）" class="headerlink" title="代码创建/修改（transact-sql）"></a>代码创建/修改（transact-sql）</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.26.11.png" alt="屏幕快照 2017-05-16 下午10.26.11"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.27.47.png" alt="屏幕快照 2017-05-16 下午10.27.47"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.28.08.png" alt="屏幕快照 2017-05-16 下午10.28.08"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.30.35.png" alt="屏幕快照 2017-05-16 下午10.30.35"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.32.34.png" alt="屏幕快照 2017-05-16 下午10.32.34"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.33.45.png" alt="屏幕快照 2017-05-16 下午10.33.45"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.34.47.png" alt="屏幕快照 2017-05-16 下午10.34.47"></p>
+<h2 id="三、数据表与索引"><a href="#三、数据表与索引" class="headerlink" title="三、数据表与索引"></a>三、数据表与索引</h2><h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.51.17.png" alt="屏幕快照 2017-05-16 下午10.51.17"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-16 下午10.58.47.png" alt="屏幕快照 2017-05-16 下午10.58.47"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.06.png" alt="屏幕快照 2017-05-17 上午12.19.06"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.22.png" alt="屏幕快照 2017-05-17 上午12.19.22"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.29.png" alt="屏幕快照 2017-05-17 上午12.19.29"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.19.45.png" alt="屏幕快照 2017-05-17 上午12.19.45"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.41.53.png" alt="屏幕快照 2017-05-17 上午12.41.53"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.48.09.png" alt="屏幕快照 2017-05-17 上午12.48.09"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.48.18.png" alt="屏幕快照 2017-05-17 上午12.48.18"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.50.35.png" alt="屏幕快照 2017-05-17 上午12.50.35"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.50.45.png" alt="屏幕快照 2017-05-17 上午12.50.45"></p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.52.50.png" alt="屏幕快照 2017-05-17 上午12.52.50"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午12.52.17.png" alt="屏幕快照 2017-05-17 上午12.52.17"></p>
+<h2 id="四、数据查询"><a href="#四、数据查询" class="headerlink" title="四、数据查询"></a>四、数据查询</h2><h3 id="查询基本语法"><a href="#查询基本语法" class="headerlink" title="查询基本语法"></a>查询基本语法</h3><h4 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.05.58.png" alt="屏幕快照 2017-05-17 上午1.05.58"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.16.49.png" alt="屏幕快照 2017-05-17 上午1.16.49"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.17.03.png" alt="屏幕快照 2017-05-17 上午1.17.03"></p>
+<h4 id="带条件查询"><a href="#带条件查询" class="headerlink" title="带条件查询"></a>带条件查询</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.18.40.png" alt="屏幕快照 2017-05-17 上午1.18.40"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.19.38.png" alt="屏幕快照 2017-05-17 上午1.19.38"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.20.09.png" alt="屏幕快照 2017-05-17 上午1.20.09"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.21.09.png" alt="屏幕快照 2017-05-17 上午1.21.09"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.22.58.png" alt="屏幕快照 2017-05-17 上午1.22.58"></p>
+<h4 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.25.41.png" alt="屏幕快照 2017-05-17 上午1.25.41"></p>
+<h4 id="INTO"><a href="#INTO" class="headerlink" title="INTO"></a>INTO</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.26.10.png" alt="屏幕快照 2017-05-17 上午1.26.10"></p>
+<h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.31.37.png" alt="屏幕快照 2017-05-17 上午1.31.37"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.34.25.png" alt="屏幕快照 2017-05-17 上午1.34.25"></p>
+<h4 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.35.18.png" alt="屏幕快照 2017-05-17 上午1.35.18"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.35.59.png" alt="屏幕快照 2017-05-17 上午1.35.59"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.36.37.png" alt="屏幕快照 2017-05-17 上午1.36.37"></p>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.40.01.png" alt="屏幕快照 2017-05-17 上午1.40.01"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.43.01.png" alt="屏幕快照 2017-05-17 上午1.43.01"></p>
+<h4 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.46.09.png" alt="屏幕快照 2017-05-17 上午1.46.09"></p>
+<h4 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h4><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.49.01.png" alt="屏幕快照 2017-05-17 上午1.49.01"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.15.png" alt="屏幕快照 2017-05-17 上午1.51.15"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.19.png" alt="屏幕快照 2017-05-17 上午1.51.19"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.23.png" alt="屏幕快照 2017-05-17 上午1.51.23"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.51.29.png" alt="屏幕快照 2017-05-17 上午1.51.29"></p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.54.33.png" alt="屏幕快照 2017-05-17 上午1.54.33"></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.57.26.png" alt="屏幕快照 2017-05-17 上午1.57.26"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午1.59.13.png" alt="屏幕快照 2017-05-17 上午1.59.13"></p>
+<h3 id="修改视图"><a href="#修改视图" class="headerlink" title="修改视图"></a>修改视图</h3><p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.00.29.png" alt="屏幕快照 2017-05-17 上午2.00.29"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.03.25.png" alt="屏幕快照 2017-05-17 上午2.03.25"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.04.02.png" alt="屏幕快照 2017-05-17 上午2.04.02"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.04.15.png" alt="屏幕快照 2017-05-17 上午2.04.15"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.04.23.png" alt="屏幕快照 2017-05-17 上午2.04.23"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.07.22.png" alt="屏幕快照 2017-05-17 上午2.07.22"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.07.41.png" alt="屏幕快照 2017-05-17 上午2.07.41"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.08.39.png" alt="屏幕快照 2017-05-17 上午2.08.39"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.09.21.png" alt="屏幕快照 2017-05-17 上午2.09.21"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.09.50.png" alt="屏幕快照 2017-05-17 上午2.09.50"></p>
+<p><img src="http://oq25aeotm.bkt.clouddn.com/屏幕快照 2017-05-17 上午2.11.22.png" alt="屏幕快照 2017-05-17 上午2.11.22"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cs/" rel="tag"># cs</a>
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/后端/" rel="tag"># 后端</a>
+          
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/17/数据库（新的）/" rel="next" title="数据库基础">
+                <i class="fa fa-chevron-left"></i> 数据库基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/19/neuralNetworks-Representation/" rel="prev" title="Neurons Networks:Representation">
+                Neurons Networks:Representation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="TianHao" />
+          <p class="site-author-name" itemprop="name">TianHao</p>
+           
+              <p class="site-description motion-element" itemprop="description">About My Life And My Work</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL"><span class="nav-number">1.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、语法"><span class="nav-number">1.1.</span> <span class="nav-text">一、语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量与常量"><span class="nav-number">1.1.2.</span> <span class="nav-text">变量与常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">1.1.3.</span> <span class="nav-text">函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、数据库的创建与管理"><span class="nav-number">1.2.</span> <span class="nav-text">二、数据库的创建与管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据文件和事务日志文件是必须的"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">数据文件和事务日志文件是必须的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据文件"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">数据文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务日志"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">事务日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码创建-修改（transact-sql）"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">代码创建/修改（transact-sql）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、数据表与索引"><span class="nav-number">1.3.</span> <span class="nav-text">三、数据表与索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据表"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">1.3.2.</span> <span class="nav-text">索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、数据查询"><span class="nav-number">1.4.</span> <span class="nav-text">四、数据查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询基本语法"><span class="nav-number">1.4.1.</span> <span class="nav-text">查询基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本查询"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">基本查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带条件查询"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">带条件查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ORDER-BY"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">ORDER BY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INTO"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">INTO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合函数"><span class="nav-number">1.4.1.5.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">1.4.1.6.</span> <span class="nav-text">GROUP BY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接查询"><span class="nav-number">1.4.1.7.</span> <span class="nav-text">连接查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNION"><span class="nav-number">1.4.1.8.</span> <span class="nav-text">UNION</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套查询"><span class="nav-number">1.4.1.9.</span> <span class="nav-text">嵌套查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图"><span class="nav-number">1.5.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.5.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改视图"><span class="nav-number">1.5.3.</span> <span class="nav-text">修改视图</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TianHao</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
